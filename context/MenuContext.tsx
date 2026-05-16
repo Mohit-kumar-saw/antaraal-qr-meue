@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:4001/api";
+const API_BASE_URL = "https://qr-menue-backend.onrender.com/api";
 
 interface CartItem {
   _id: string;
