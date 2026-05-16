@@ -2,7 +2,8 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Star, Clock, UtensilsCrossed } from "lucide-react";
+import { X, Star, Clock, UtensilsCrossed, ShoppingCart } from "lucide-react";
+import { useMenu } from "@/context/MenuContext";
 
 interface DishDetailModalProps {
   item: any;
@@ -11,6 +12,7 @@ interface DishDetailModalProps {
 }
 
 export const DishDetailModal = ({ item, isOpen, onClose }: DishDetailModalProps) => {
+  const { addToCart } = useMenu();
   return (
     <AnimatePresence>
       {isOpen && item ? (
@@ -59,7 +61,7 @@ export const DishDetailModal = ({ item, isOpen, onClose }: DishDetailModalProps)
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-10 left-10 right-10">
-                  <span className="bg-[#2d5a27] text-[10px] font-black uppercase tracking-[0.3em] px-4 py-2 rounded-full mb-4 inline-block shadow-lg leading-none text-white">
+                  <span className="bg-zinc-950 text-[10px] font-black uppercase tracking-[0.3em] px-4 py-2 rounded-full mb-4 inline-block shadow-lg leading-none text-white">
                     {item.category?.name || "Premium Dish"}
                   </span>
                   <h2 className="text-5xl md:text-6xl font-serif font-semibold tracking-tight text-white leading-none">
@@ -71,7 +73,7 @@ export const DishDetailModal = ({ item, isOpen, onClose }: DishDetailModalProps)
               <div className="px-10 py-10 space-y-10">
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-1.5 text-[#2d5a27] bg-[#2d5a27]/5 px-4 py-2 rounded-2xl shadow-sm border border-[#2d5a27]/10">
+                    <div className="flex items-center gap-1.5 text-zinc-950 bg-zinc-950/5 px-4 py-2 rounded-2xl shadow-sm border border-zinc-950/10">
                       <Star size={18} fill="currentColor" />
                       <span className="font-serif font-semibold text-base">4.9</span>
                     </div>
@@ -80,14 +82,14 @@ export const DishDetailModal = ({ item, isOpen, onClose }: DishDetailModalProps)
                       <span className="font-bold uppercase tracking-widest text-[10px]">15-20 min</span>
                     </div>
                   </div>
-                  <div className="text-3xl md:text-4xl font-serif font-semibold text-[#2d5a27] tracking-tight">
+                  <div className="text-3xl md:text-4xl font-serif font-semibold text-zinc-950 tracking-tight">
                     ₹{item.price}
                   </div>
                 </div>
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-1 h-6 bg-[#2d5a27] rounded-full" />
+                    <div className="w-1 h-6 bg-zinc-950 rounded-full" />
                     <h4 className="font-serif font-semibold text-zinc-900 uppercase tracking-[0.2em] text-xs">Chef's Description</h4>
                   </div>
                   <p className="text-zinc-500 text-xl font-medium leading-relaxed italic opacity-90">
@@ -95,12 +97,23 @@ export const DishDetailModal = ({ item, isOpen, onClose }: DishDetailModalProps)
                   </p>
                 </div>
 
-                <button
-                  onClick={onClose}
-                  className="w-full bg-[#050b14] text-white py-6 rounded-[2.5rem] font-serif font-semibold uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-2 hover:bg-[#2d5a27] transition-all duration-500 shadow-2xl active:scale-[0.98] mt-8"
-                >
-                  Explore More Dishes
-                </button>
+                <div className="flex flex-col gap-4 pt-4">
+                  <button
+                    onClick={() => {
+                      addToCart(item);
+                      onClose();
+                    }}
+                    className="w-full bg-[#050b14] text-white py-6 rounded-[2.5rem] font-serif font-semibold uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 hover:bg-zinc-900 transition-all duration-500 shadow-2xl active:scale-[0.98]"
+                  >
+                    <ShoppingCart size={20} /> Add to Cart
+                  </button>
+                  <button
+                    onClick={onClose}
+                    className="w-full bg-zinc-100 text-zinc-400 py-5 rounded-[2.5rem] font-serif font-semibold uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all duration-500"
+                  >
+                    Back to Menu
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>
