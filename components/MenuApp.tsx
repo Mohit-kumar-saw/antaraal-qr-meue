@@ -17,11 +17,11 @@ function MenuContent() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  const categorySuggestions = categories.filter(c => 
+  const categorySuggestions = categories.filter(c =>
     c.name !== "All" && c.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  
-  const itemSuggestions = menuItems.filter(item => 
+
+  const itemSuggestions = menuItems.filter(item =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -42,8 +42,8 @@ function MenuContent() {
   return (
     <div className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-zinc-900/10 selection:text-zinc-900 overflow-x-hidden">
       {/* Premium Header/Search Section */}
-      <div className="sticky top-0 z-40 bg-zinc-950 px-6 pt-10 pb-6 space-y-8 border-b border-white/10 shadow-xl animate-in slide-in-from-top duration-1000">
-        <Image src="/background.png" alt="Header Background" fill className="object-cover opacity-50 absolute inset-0" priority />
+      <div className="sticky top-0 z-40 bg-[#17281e] px-6 pt-10 pb-6 space-y-8 border-b border-white/10 shadow-xl animate-in slide-in-from-top duration-1000">
+        {/* <Image src="/background.png" alt="Header Background" fill className="object-cover opacity-50 absolute inset-0" priority /> */}
         <div className="relative z-10 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-[1.25rem] flex items-center justify-center shadow-xl relative overflow-hidden group border border-white/20">
@@ -104,7 +104,7 @@ function MenuContent() {
                     ))}
                   </div>
                 )}
-                
+
                 {itemSuggestions.length > 0 && (
                   <div className="p-4 pt-0">
                     <p className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-2 px-2">Dishes</p>
@@ -214,8 +214,8 @@ function MenuContent() {
 
 
       {/* Premium Footer */}
-      <footer className="p-16 bg-[#050b14] text-center space-y-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(197,160,89,0.1),transparent)] pointer-events-none" />
+      <footer className="p-16 bg-[#17281e] text-center space-y-8 relative overflow-hidden">
+        {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(197,160,89,0.1),transparent)] pointer-events-none" /> */}
         <div className="flex flex-col items-center justify-center gap-4 relative z-10">
           <div className="w-48 h-24 rounded-2xl overflow-hidden flex items-center justify-center shadow-2xl border border-white/10 group bg-white/5">
             <Image src="/images/logo.png" alt="Antaraal Resort & Spa" width={192} height={96} priority className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

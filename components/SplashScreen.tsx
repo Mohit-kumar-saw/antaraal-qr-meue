@@ -31,7 +31,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
   return (
     <div
       className={cn(
-        "fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black transition-opacity duration-700",
+        "fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#17281e] transition-opacity duration-700",
         isFadingOut ? "opacity-0" : "opacity-100"
       )}
     >
